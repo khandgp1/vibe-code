@@ -1,0 +1,113 @@
+:root {
+    --bg-color: #F5F5F3;      /* Matte Off-White */
+    --card-bg: #FFFFFF;
+    --text-main: #2D2D2D;     /* Slate Charcoal */
+    --text-muted: #757575;
+    --accent: #8A9A5B;        /* Muted Sage */
+    --border: #E0E0DE;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    font-weight: 300;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+}
+
+#tab-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    overflow-x: auto;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.tab-btn.active {
+    color: var(--text-main);
+    border-bottom: 2px solid var(--accent);
+    font-weight: bold;
+}
+
+#workout-content {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.exercise-card {
+    background: var(--card-bg);
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease;
+}
+
+.exercise-card:active {
+    transform: scale(0.98);
+    background-color: #FAFAFA;
+}
+
+.exercise-card h3 {
+    margin: 0 0 10px 0;
+    font-weight: 500;
+}
+
+.meta {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.tips {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-left: 2px solid var(--border);
+    padding-left: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+}

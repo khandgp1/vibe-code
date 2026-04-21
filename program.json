@@ -1,0 +1,58 @@
+{
+  "days": [
+    {
+      "title": "DAY 1",
+      "focus": "Upper Chest & Width",
+      "exercises": [
+        {
+          "name": "Incline Dumbbell Press",
+          "sets": "4",
+          "reps": "8-10",
+          "note": "Control the eccentric. Focus on the stretch at the bottom."
+        },
+        {
+          "name": "Weighted Pullups",
+          "sets": "3",
+          "reps": "Failure",
+          "note": "Full extension at the bottom, chin over the bar."
+        },
+        {
+          "name": "Lateral Raises",
+          "sets": "5",
+          "reps": "15-20",
+          "note": "Lean slightly forward. Lead with the elbows."
+        }
+      ]
+    },
+    {
+      "title": "DAY 2",
+      "focus": "Posterior Chain",
+      "exercises": [
+        {
+          "name": "Romanian Deadlifts",
+          "sets": "3",
+          "reps": "10-12",
+          "note": "Hinge at the hips. Keep the bar close to your shins."
+        },
+        {
+          "name": "Seated Cable Rows",
+          "sets": "4",
+          "reps": "12",
+          "note": "Squeeze shoulder blades together. Do not use momentum."
+        }
+      ]
+    },
+    {
+      "title": "DAY 3",
+      "focus": "Active Recovery",
+      "exercises": [
+        {
+          "name": "Mobility Flow",
+          "sets": "1",
+          "reps": "20 min",
+          "note": "Focus on hip openers and thoracic extension."
+        }
+      ]
+    }
+  ]
+}
