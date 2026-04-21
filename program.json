@@ -1,26 +1,34 @@
 {
   "days": [
     {
-      "title": "DAY 1",
-      "focus": "Upper Chest & Width",
+      "title": "Intro",
+      "focus": "Vibe Coding Workflow",
+      "description": "Mastering the loop between human intent and AI execution.",
+      "mindset": "You are the Architect. The LLM is your Project Manager. Project IDX is your Lead Developer. You don't need to speak the machine's language fluently; you just need to guide the conversation.",
       "exercises": [
         {
-          "name": "Incline Dumbbell Press",
-          "sets": "4",
-          "reps": "8-10",
-          "note": "Control the eccentric. Focus on the stretch at the bottom."
+          "name": "1. The Kickstart: AI Blueprinting",
+          "sets": "Idea",
+          "reps": "Blueprint",
+          "note": "Describe your vision in plain English to generate a No-Code Implementation Plan."
         },
         {
-          "name": "Weighted Pullups",
-          "sets": "3",
-          "reps": "Failure",
-          "note": "Full extension at the bottom, chin over the bar."
+          "name": "2. The Implementation: Anti-Gravity (IDX)",
+          "sets": "Blueprint",
+          "reps": "Codebase",
+          "note": "Feed your plan into Project IDX to generate the initial codebase and see a tangible preview instantly."
         },
         {
-          "name": "Lateral Raises",
-          "sets": "5",
-          "reps": "15-20",
-          "note": "Lean slightly forward. Lead with the elbows."
+          "name": "3. The Review: Strategic Feedback",
+          "sets": "Iterative",
+          "reps": "Update Plan",
+          "note": "Identify changes and describe adjustments back to an LLM to generate a Focused Update Plan."
+        },
+        {
+          "name": "4. The Iteration: Refine and Repeat",
+          "sets": "Continuous",
+          "reps": "Vision",
+          "note": "Move back and forth between the plan and implementation until the project perfectly matches your vision."
         }
       ]
     },
