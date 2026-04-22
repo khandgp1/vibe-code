@@ -48,19 +48,9 @@
           "note": "Append this when revisiting an existing plan. Replace ## with the plan number to update."
         },
         {
-          "name": "The Architect Kickstart",
-          "content": "Act as an Expert Software Architect. Your task is to create a detailed, step-by-step roadmap for a new project. This roadmap must outline features, file structures, and logic—without writing the actual implementation code yet.",
-          "note": "Use this for initial project planning."
-        },
-        {
-          "name": "The Implementation Logic",
-          "content": "Based on the provided blueprint, generate the HTML, CSS, and Javascript. Ensure modular structure and clean, readable code. Focus on the core functionality first.",
-          "note": "Use this when moving from plan to code."
-        },
-        {
-          "name": "The Strategic Refinement",
-          "content": "Review the current implementation. Identify potential bugs, performance bottlenecks, or aesthetic improvements. Provide a specific, prioritized list of adjustments.",
-          "note": "Use this for iterative improvements."
+          "name": "Execute the Plan",
+          "content": "Great. Let's implement that, update the checklist as you go. @",
+          "note": "Replace @ with the plan file reference. Execute"
         }
       ]
     }
