@@ -27,67 +27,11 @@
     <div id="drawer-overlay"></div>
     <div id="side-drawer">
         <div class="drawer-header">
-            <h3>THE KICKSTART: AI BLUEPRINTING</h3>
+            <h3 id="drawer-title"></h3>
             <button id="close-drawer" aria-label="Close drawer">×</button>
         </div>
-        <div class="drawer-content">
-            <div class="blueprint-layout">
-                <section class="blueprint-intro">
-                    <p><strong>Goal:</strong> Architect before you build. Generate a detailed No-Code Implementation Plan.</p>
-                </section>
-
-                <section class="tcrei-framework">
-                    <h4>The T.C.R.E.I. Framework</h4>
-                    <p class="framework-subtitle">Tiny Crabs Ride Enormous Iguanas</p>
-                    <ul class="framework-list">
-                        <li><strong>Task:</strong> Define a specific expert persona tailored to your niche.</li>
-                        <li><strong>Context:</strong> Provide the background, project goals, target audience, and specific constraints.</li>
-                        <li><strong>Reference:</strong> Provide examples if possible to ground the prompts.</li>
-                        <li><strong>Evaluate:</strong> Assess implementation plan.</li>
-                        <li><strong>Iterate:</strong> Make small, surgical adjustments to the prompt to refine the plan.</li>
-                    </ul>
-                </section>
-
-                <section class="master-blueprint">
-                    <h4>The "Master Blueprint" Prompt</h4>
-                    <p class="minor-instruction">Copy and paste this boilerplate to START your prompt.</p>
-                    
-                    <div class="pro-tip">
-                        <strong>Pro Tip:</strong> Use the "Deep Thinking" model setting (available in Gemini) to generate the plan. If you hit rate limits, switch to the highest performance-tier model available. Enable any "Enhanced Prompt" features if your LLM offers them.
-                    </div>
-
-                    <div class="prompt-box">
-                        <div class="prompt-header">
-                            <span>Boilerplate Prompt</span>
-                            <button class="copy-btn">Copy</button>
-                        </div>
-                        <pre><code>Act as an Expert Software Architect. Your task is to create a detailed, step-by-step roadmap for a new project. This roadmap must outline features, file structures, and logic—without writing the actual implementation code yet.
-
-Architecture Requirements:
-* Modular component structure with separate files for each major section.
-* Keep individual files short (approx. 600 lines max) to simplify future refactoring.
-* Prioritize robust, reusable code blocks for future scalability.
-* Use placeholders for complex state management; focus on logic flow.
-* Suggest best practices and a tech stack.
-* Format the entire output in Markdown for easy copying.</code></pre>
-                    </div>
-
-                    <p class="workflow-marker">Copy and paste this to complete the initial prompt</p>
-
-                    <div class="prompt-box">
-                        <div class="prompt-header">
-                            <span>Personalized Prompt</span>
-                            <button class="copy-btn">Copy</button>
-                        </div>
-                        <pre><code>The Project Specifics:
-Now, apply the requirements above to the following project:
-* Goal: [e.g., ETL + Data Cleaning + Basic Data Analysis for a CDC Project focused on Census Demographics]
-* Tech Stack: [e.g., I want to use the R language exclusively.]
-* Sample Data: [Paste your sample data or schema here]</code></pre>
-                    </div>
-                </section>
-                <p class="workflow-marker final-instruction">Evaluate, Iterate, Complete</p>
-            </div>
+        <div id="drawer-dynamic-content" class="drawer-content">
+            <!-- Content injected via JS -->
         </div>
     </div>
 

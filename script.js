@@ -64,6 +64,126 @@ function renderWorkout(day) {
     });
 }
 
+const drawerContent = {
+    0: {
+        title: "THE KICKSTART: AI BLUEPRINTING",
+        html: `
+            <div class="blueprint-layout">
+                <section class="blueprint-intro">
+                    <p><strong>Goal:</strong> Architect before you build. Generate a detailed No-Code Implementation Plan.</p>
+                </section>
+
+                <section class="tcrei-framework">
+                    <h4>The T.C.R.E.I. Framework</h4>
+                    <p class="framework-subtitle">Tiny Crabs Ride Enormous Iguanas</p>
+                    <ul class="framework-list">
+                        <li><strong>Task:</strong> Define a specific expert persona tailored to your niche.</li>
+                        <li><strong>Context:</strong> Provide the background, project goals, target audience, and specific constraints.</li>
+                        <li><strong>Reference:</strong> Provide examples if possible to ground the prompts.</li>
+                        <li><strong>Evaluate:</strong> Assess implementation plan.</li>
+                        <li><strong>Iterate:</strong> Make small, surgical adjustments to the prompt to refine the plan.</li>
+                    </ul>
+                </section>
+
+                <section class="master-blueprint">
+                    <h4>The "Master Blueprint" Prompt</h4>
+                    <p class="minor-instruction">Copy and paste this boilerplate to START your prompt.</p>
+                    
+                    <div class="pro-tip">
+                        <strong>Pro Tip:</strong> Use the "Deep Thinking" model setting (available in Gemini) to generate the plan. If you hit rate limits, switch to the highest performance-tier model available. Enable any "Enhanced Prompt" features if your LLM offers them.
+                    </div>
+
+                    <div class="prompt-box">
+                        <div class="prompt-header">
+                            <span>Boilerplate Prompt</span>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                        <pre><code>Act as an Expert Software Architect. Your task is to create a detailed, step-by-step roadmap for a new project. This roadmap must outline features, file structures, and logic—without writing the actual implementation code yet.
+
+Architecture Requirements:
+* Modular component structure with separate files for each major section.
+* Keep individual files short (approx. 600 lines max) to simplify future refactoring.
+* Prioritize robust, reusable code blocks for future scalability.
+* Use placeholders for complex state management; focus on logic flow.
+* Suggest best practices and a tech stack.
+* Format the entire output in Markdown for easy copying.</code></pre>
+                    </div>
+
+                    <p class="workflow-marker">Copy and paste this to complete the initial prompt</p>
+
+                    <div class="prompt-box">
+                        <div class="prompt-header">
+                            <span>Personalized Prompt</span>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                        <pre><code>The Project Specifics:
+Now, apply the requirements above to the following project:
+* Goal: [e.g., ETL + Data Cleaning + Basic Data Analysis for a CDC Project focused on Census Demographics]
+* Tech Stack: [e.g., I want to use the R language exclusively.]
+* Sample Data: [Paste your sample data or schema here]</code></pre>
+                    </div>
+                </section>
+                <p class="workflow-marker final-instruction">Evaluate, Iterate, Complete</p>
+            </div>
+        `
+    },
+    1: {
+        title: "2. THE IMPLEMENTATION: ANTI-GRAVITY (IDX)",
+        html: `
+            <div class="blueprint-layout">
+                <section class="blueprint-intro">
+                    <p><strong>Goal:</strong> Transform your architectural blueprint into a living, breathing codebase using Project IDX.</p>
+                </section>
+
+                <section class="tcrei-framework">
+                    <h4>The Implementation Workflow</h4>
+                    <p class="framework-subtitle">From Blueprint to Reality</p>
+                    <ul class="framework-list">
+                        <li><strong>Initialize:</strong> Open Project IDX and set up your development environment.</li>
+                        <li><strong>Inject:</strong> Feed your "Master Blueprint" into the IDX AI assistant.</li>
+                        <li><strong>Scaffold:</strong> Allow the AI to generate the initial file structure and core logic.</li>
+                        <li><strong>Preview:</strong> Use the built-in preview to see your progress in real-time.</li>
+                        <li><strong>Deploy:</strong> Push your changes to verify the implementation.</li>
+                    </ul>
+                </section>
+
+                <section class="master-blueprint">
+                    <h4>The "Anti-Gravity" Prompt</h4>
+                    <p class="minor-instruction">Use this prompt to trigger the initial codebase generation.</p>
+                    
+                    <div class="pro-tip">
+                        <strong>Pro Tip:</strong> Be specific about your file naming conventions and folder structures to ensure consistency across the project.
+                    </div>
+
+                    <div class="prompt-box">
+                        <div class="prompt-header">
+                            <span>Implementation Prompt</span>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                        <pre><code>Based on the previously generated Implementation Plan, please begin the implementation.
+Start by creating the initial folder structure and the fundamental 'index.html' and 'style.css' files.
+Ensure the design matches the aesthetic defined in the plan.
+Do not write all the logic at once; start with the skeleton and wait for my next instruction.</code></pre>
+                    </div>
+
+                    <p class="workflow-marker">Continue the loop in IDX</p>
+
+                    <div class="prompt-box">
+                        <div class="prompt-header">
+                            <span>Refinement Prompt</span>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                        <pre><code>Now that the skeleton is ready, please implement the [Specific Component Name].
+Follow the logic flow defined in the blueprint.
+Validate each step with a preview before moving to the next.</code></pre>
+                    </div>
+                </section>
+                <p class="workflow-marker final-instruction">Build, Test, Refine</p>
+            </div>
+        `
+    }
+};
+
 function renderIntro(day) {
     const content = document.getElementById('workout-content');
     
@@ -71,8 +191,8 @@ function renderIntro(day) {
         <div class="intro-container layout-bento">
             <div class="grid-wrapper">
                 ${day.exercises.map((ex, idx) => `
-                    <div class="bento-card ${idx === 0 ? 'clickable-card' : ''}" 
-                         ${idx === 0 ? 'onclick="openDrawer()"' : ''}>
+                    <div class="bento-card ${[0, 1].includes(idx) ? 'clickable-card' : ''}" 
+                         ${[0, 1].includes(idx) ? `onclick="openDrawer(${idx})"` : ''}>
                         <h3>${ex.name.split(':')[0]}</h3>
                         <p class="step-note">${ex.note}</p>
                     </div>
@@ -98,10 +218,19 @@ function renderIntro(day) {
 }
 
 
-function openDrawer() {
+function openDrawer(index) {
+    const content = drawerContent[index];
+    if (!content) return;
+
+    document.getElementById('drawer-title').innerText = content.title;
+    document.getElementById('drawer-dynamic-content').innerHTML = content.html;
+
     document.getElementById('side-drawer').classList.add('active');
     document.getElementById('drawer-overlay').classList.add('active');
     document.body.classList.add('drawer-open');
+    
+    // Re-bind copy buttons for the new content
+    bindCopyButtons();
 }
 
 function closeDrawer() {
@@ -119,6 +248,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (overlay) overlay.onclick = closeDrawer;
 
     // Setup Copy Buttons
+    bindCopyButtons();
+
+    window.onkeydown = (e) => {
+        if (e.key === 'Escape') closeDrawer();
+    };
+});
+
+function bindCopyButtons() {
     document.querySelectorAll('.copy-btn').forEach(copyBtn => {
         copyBtn.onclick = async () => {
             const codeElement = copyBtn.closest('.prompt-box').querySelector('code');
@@ -157,20 +294,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
     });
+}
 
-    function handleCopySuccess(btn) {
-        const originalText = btn.innerText;
-        btn.innerText = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(() => {
-            btn.innerText = originalText;
-            btn.classList.remove('copied');
-        }, 2000);
-    }
-
-    window.onkeydown = (e) => {
-        if (e.key === 'Escape') closeDrawer();
-    };
-});
+function handleCopySuccess(btn) {
+    const originalText = btn.innerText;
+    btn.innerText = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+        btn.innerText = originalText;
+        btn.classList.remove('copied');
+    }, 2000);
+}
 
 window.onload = init;
