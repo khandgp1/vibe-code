@@ -25,9 +25,9 @@ This plan outlines the refactoring of the Copy to Clipboard functionality to ens
 
 - [x] Create implementation plan `14_IMPLEMENTATION_.md`
 - [x] Research Safari clipboard restrictions (Confirmed: strict user gesture & tick requirements)
-- [ ] Refactor click handler in `script.js` to use the fallback logic
-- [ ] Implement hidden `textarea` mechanism for legacy support
-- [ ] Test cross-browser compatibility (Logical check)
+- [x] Refactor click handler in `script.js` to use the fallback logic
+- [x] Implement hidden `textarea` mechanism for legacy support
+- [x] Test cross-browser compatibility (Logical check)
 - [ ] Verify functionality on Safari/iOS specifically (Manual check recommended)
 
 ## Verification Plan

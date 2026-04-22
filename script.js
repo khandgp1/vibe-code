@@ -122,23 +122,51 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.copy-btn').forEach(copyBtn => {
         copyBtn.onclick = async () => {
             const codeElement = copyBtn.closest('.prompt-box').querySelector('code');
-            if (codeElement) {
-                const text = codeElement.innerText;
+            if (!codeElement) return;
+            
+            const text = codeElement.innerText;
+            
+            // 1. Try Modern Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
                 try {
                     await navigator.clipboard.writeText(text);
-                    const originalText = copyBtn.innerText;
-                    copyBtn.innerText = 'Copied!';
-                    copyBtn.classList.add('copied');
-                    setTimeout(() => {
-                        copyBtn.innerText = originalText;
-                        copyBtn.classList.remove('copied');
-                    }, 2000);
+                    handleCopySuccess(copyBtn);
+                    return;
                 } catch (err) {
-                    console.error('Failed to copy: ', err);
+                    console.warn('Modern clipboard failed, trying fallback...', err);
                 }
+            }
+
+            // 2. Legacy Fallback (execCommand)
+            try {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-9999px";
+                textArea.style.top = "0";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                const successful = document.execCommand('copy');
+                document.body.removeChild(textArea);
+                if (successful) {
+                    handleCopySuccess(copyBtn);
+                }
+            } catch (err) {
+                console.error('Fallback copy failed: ', err);
             }
         };
     });
+
+    function handleCopySuccess(btn) {
+        const originalText = btn.innerText;
+        btn.innerText = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.innerText = originalText;
+            btn.classList.remove('copied');
+        }, 2000);
+    }
 
     window.onkeydown = (e) => {
         if (e.key === 'Escape') closeDrawer();
