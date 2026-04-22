@@ -118,9 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeBtn) closeBtn.onclick = closeDrawer;
     if (overlay) overlay.onclick = closeDrawer;
 
-    // Setup Copy Button
-    const copyBtn = document.querySelector('.copy-btn');
-    if (copyBtn) {
+    // Setup Copy Buttons
+    document.querySelectorAll('.copy-btn').forEach(copyBtn => {
         copyBtn.onclick = async () => {
             const codeElement = copyBtn.closest('.prompt-box').querySelector('code');
             if (codeElement) {
@@ -139,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         };
-    }
+    });
 
     window.onkeydown = (e) => {
         if (e.key === 'Escape') closeDrawer();
