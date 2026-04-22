@@ -24,9 +24,9 @@ This plan outlines the implementation of the "Copy to Clipboard" feature for the
 
 - [x] Create implementation plan `12_IMPLEMENTATION_.md`
 - [x] Research existing logic (None found)
-- [ ] Implement `setupCopyButton` logic in `script.js`
-- [ ] Attach click listener to `.copy-btn`
-- [ ] Add visual feedback (text swap to "Copied!")
+- [x] Implement `setupCopyButton` logic in `script.js`
+- [x] Attach click listener to `.copy-btn`
+- [x] Add visual feedback (text swap to "Copied!")
 - [ ] Verify functionality in the browser
 
 ## Verification Plan

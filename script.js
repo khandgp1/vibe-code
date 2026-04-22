@@ -118,6 +118,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeBtn) closeBtn.onclick = closeDrawer;
     if (overlay) overlay.onclick = closeDrawer;
 
+    // Setup Copy Button
+    const copyBtn = document.querySelector('.copy-btn');
+    if (copyBtn) {
+        copyBtn.onclick = async () => {
+            const codeElement = copyBtn.closest('.prompt-box').querySelector('code');
+            if (codeElement) {
+                const text = codeElement.innerText;
+                try {
+                    await navigator.clipboard.writeText(text);
+                    const originalText = copyBtn.innerText;
+                    copyBtn.innerText = 'Copied!';
+                    copyBtn.classList.add('copied');
+                    setTimeout(() => {
+                        copyBtn.innerText = originalText;
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                }
+            }
+        };
+    }
+
     window.onkeydown = (e) => {
         if (e.key === 'Escape') closeDrawer();
     };
