@@ -125,29 +125,7 @@ footer {
 
 /* --- Intro Tab Specific Layouts --- */
 
-.layout-switcher {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.layout-btn {
-    background: #EAEAEA;
-    border: 1px solid #DDD;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    cursor: pointer;
-    color: #666;
-    transition: all 0.2s ease;
-}
-
-.layout-btn.active {
-    background: var(--text-main);
-    color: white;
-    border-color: var(--text-main);
-}
+/* --- Intro Tab - Bento Layout --- */
 
 .intro-container {
     animation: fadeIn 0.5s ease;
@@ -158,32 +136,6 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 1. Clean Canvas */
-.layout-clean .content-wrapper {
-    text-align: left;
-    max-width: 550px;
-    margin: 0 auto;
-}
-
-.layout-clean .step-item {
-    margin-bottom: 40px;
-}
-
-.layout-clean h3 {
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-bottom: 15px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 5px;
-}
-
-.layout-clean .step-note {
-    color: var(--text-main);
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-/* 2. Modular Bento Lite */
 .layout-bento .grid-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -214,35 +166,6 @@ footer {
 .layout-bento .step-note {
     font-size: 0.9rem;
     color: var(--text-main);
-}
-
-/* 3. Guided Path */
-.layout-path .path-wrapper {
-    position: relative;
-    padding-left: 30px;
-    border-left: 1px solid var(--border);
-    margin-left: 10px;
-}
-
-.layout-path .path-step {
-    position: relative;
-    margin-bottom: 35px;
-}
-
-.layout-path .path-step::before {
-    content: '';
-    position: absolute;
-    left: -35px;
-    top: 5px;
-    width: 9px;
-    height: 9px;
-    background: var(--accent);
-    border-radius: 50%;
-}
-
-.layout-path h3 {
-    font-size: 1.1rem;
-    margin-bottom: 5px;
 }
 
 /* Mindset Quote Styling */
