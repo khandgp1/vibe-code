@@ -38,6 +38,16 @@
       "description": "Copy and paste these templates to accelerate your Vibe Coding workflow.",
       "exercises": [
         {
+          "name": "Request an Implementation Plan",
+          "content": "Create an implementation plan for this update, called '##_IMPLEMENTATION_.md'\n- Add this file to the implementation_plans folder, create one if needed\n\nDon't change any code yet, only create that file, also include a checklist so we can track our progress as we go, on this or other chats with AI dev agents.",
+          "note": "Append this to the end of any new request. Replace ## with the next number in the sequence."
+        },
+        {
+          "name": "Update an Implementation Plan",
+          "content": "Update the implementation plan for this update, called '##_IMPLEMENTATION_.md'\n\nDon't change any code yet, only create that file, also include a checklist so we can track our progress as we go, on this or other chats with AI dev agents.",
+          "note": "Append this when revisiting an existing plan. Replace ## with the plan number to update."
+        },
+        {
           "name": "The Architect Kickstart",
           "content": "Act as an Expert Software Architect. Your task is to create a detailed, step-by-step roadmap for a new project. This roadmap must outline features, file structures, and logic—without writing the actual implementation code yet.",
           "note": "Use this for initial project planning."
