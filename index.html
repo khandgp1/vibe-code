@@ -27,17 +27,81 @@
     <div id="drawer-overlay"></div>
     <div id="side-drawer">
         <div class="drawer-header">
-            <h3>Blueprint: The Kickstart</h3>
+            <h3>THE KICKSTART: AI BLUEPRINTING</h3>
             <button id="close-drawer" aria-label="Close drawer">×</button>
         </div>
         <div class="drawer-content">
-            <div class="placeholder-content">
-                <p>Establishing AI Blueprint...</p>
-                <div class="shimmer-line"></div>
-                <div class="shimmer-line shorter"></div>
-                <p style="margin-top: 20px;">Describe your vision below to generate a focused implementation plan.</p>
-                <textarea placeholder="e.g., 'I want to build a fitness dashboard with bento-style cards and smooth transitions...'" class="placeholder-input"></textarea>
-                <button class="placeholder-action">Generate Blueprint</button>
+            <div class="blueprint-layout">
+                <section class="blueprint-intro">
+                    <p><strong>Goal:</strong> Architect before you build. Generate a detailed No-Code Implementation Plan.</p>
+                </section>
+
+                <section class="tcrei-framework">
+                    <h4>The T.C.R.E.I. Framework</h4>
+                    <ul class="framework-list">
+                        <li><strong>Task:</strong> Define a specific expert persona tailored to your niche.</li>
+                        <li><strong>Context:</strong> Provide the background, project goals, target audience, and specific constraints.</li>
+                        <li><strong>Reference:</strong> Provide examples if possible to ground the prompts.</li>
+                        <li><strong>Evaluate:</strong> Assess implementation plan.</li>
+                        <li><strong>Iterate:</strong> Make small, surgical adjustments to the prompt to refine the plan.</li>
+                    </ul>
+                </section>
+
+                <section class="master-blueprint">
+                    <h4>The "Master Blueprint" Prompt</h4>
+                    <p>Copy and paste this boilerplate into your LLM to generate your roadmap.</p>
+                    
+                    <div class="pro-tip">
+                        <strong>Pro Tip:</strong> Use the "Deep Thinking" model setting (available in Gemini) to generate the plan. If you hit rate limits, switch to the highest performance-tier model available. Enable any "Enhanced Prompt" features if your LLM offers them.
+                    </div>
+
+                    <div class="prompt-box">
+                        <div class="prompt-header">
+                            <span>Boilerplate Prompt</span>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                        <pre><code>Step 1: The Expert Persona & Architecture
+Act as a Senior Software Architect and R Developer. Your task is to create a detailed, step-by-step roadmap for a new project. This roadmap must outline features, file structures, and logic—without writing the actual implementation code yet.
+
+Architecture Requirements:
+* Modular component structure with separate files for each major section.
+* Keep individual files short (approx. 600 lines max) to simplify future refactoring.
+* Prioritize robust, reusable code blocks for future scalability.
+* Use placeholders for complex state management; focus on logic flow.
+* Suggest UI/UX best practices and a modern tech stack.
+* Format the entire output in Markdown for easy copying.
+
+Step 2: The Project Specifics
+Now, apply the requirements above to the following project:
+* Goal: [e.g., ETL + Data Cleaning + Basic Data Analysis for a CDC Project focused on Census Demographics]
+* Tech Stack: I want to use the R language exclusively.
+* Sample Data: [Paste your sample data or schema here]</code></pre>
+                    </div>
+                </section>
+
+                <section class="execution-strategy">
+                    <h4>Execution Strategy</h4>
+                    <div class="strategy-steps">
+                        <div class="strategy-step">
+                            <span class="step-num">1</span>
+                            <div class="step-content">
+                                <strong>Generate:</strong> Let the LLM provide the full file structure (e.g., ui.R, server.R, cleaning_logic.R).
+                            </div>
+                        </div>
+                        <div class="strategy-step">
+                            <span class="step-num">2</span>
+                            <div class="step-content">
+                                <strong>Verify:</strong> Does the logic make sense? Are the data transformations accurate for the CDC project?
+                            </div>
+                        </div>
+                        <div class="strategy-step">
+                            <span class="step-num">3</span>
+                            <div class="step-content">
+                                <strong>Refine:</strong> If the plan is too broad, ask the LLM to "Double-click into the Data Cleaning module" to get more granular detail before moving to the IDE.
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
