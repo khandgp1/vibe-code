@@ -142,6 +142,16 @@ footer {
     gap: 15px;
 }
 
+.layout-bento .bento-card.clickable-card {
+    cursor: pointer;
+    border: 1px solid rgba(138, 154, 91, 0.2); /* Soft sage border */
+}
+
+.layout-bento .bento-card.clickable-card:hover {
+    border-color: var(--accent);
+    background: #FAFAFA;
+}
+
 .layout-bento .bento-card {
     background: #FFF;
     padding: 20px;
@@ -189,4 +199,143 @@ footer {
     left: 20px;
     font-size: 4rem;
     opacity: 0.2;
+}
+
+/* --- Side Drawer & Overlay --- */
+
+#drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#drawer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#side-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 450px;
+    max-width: 90vw;
+    background: #1A1A1A; /* Deeper Charcoal */
+    color: #FFF;
+    z-index: 1001;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+}
+
+#side-drawer.active {
+    transform: translateX(0);
+}
+
+.drawer-header {
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.drawer-header h3 {
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--accent);
+}
+
+#close-drawer {
+    background: none;
+    border: none;
+    color: #FFF;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+#close-drawer:hover {
+    opacity: 1;
+}
+
+.drawer-content {
+    padding: 30px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Placeholder Styling */
+.placeholder-content {
+    animation: fadeIn 0.8s ease;
+}
+
+.shimmer-line {
+    height: 10px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.shimmer-line.shorter { width: 60%; }
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.placeholder-input {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 15px;
+    color: #FFF;
+    font-family: inherit;
+    height: 120px;
+    margin-top: 10px;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.placeholder-input:focus {
+    border-color: var(--accent);
+}
+
+.placeholder-action {
+    background: var(--accent);
+    color: #FFF;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    transition: transform 0.2s;
+}
+
+.placeholder-action:active {
+    transform: scale(0.98);
+}
+
+/* Prevent scroll when drawer is open */
+body.drawer-open {
+    overflow: hidden;
 }

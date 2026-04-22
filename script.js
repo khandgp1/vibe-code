@@ -70,8 +70,9 @@ function renderIntro(day) {
     const innerContent = `
         <div class="intro-container layout-bento">
             <div class="grid-wrapper">
-                ${day.exercises.map(ex => `
-                    <div class="bento-card">
+                ${day.exercises.map((ex, idx) => `
+                    <div class="bento-card ${idx === 0 ? 'clickable-card' : ''}" 
+                         ${idx === 0 ? 'onclick="openDrawer()"' : ''}>
                         <h3>${ex.name.split(':')[0]}</h3>
                         <p class="step-note">${ex.note}</p>
                     </div>
@@ -95,5 +96,31 @@ function renderIntro(day) {
         ${mindset}
     `;
 }
+
+
+function openDrawer() {
+    document.getElementById('side-drawer').classList.add('active');
+    document.getElementById('drawer-overlay').classList.add('active');
+    document.body.classList.add('drawer-open');
+}
+
+function closeDrawer() {
+    document.getElementById('side-drawer').classList.remove('active');
+    document.getElementById('drawer-overlay').classList.remove('active');
+    document.body.classList.remove('drawer-open');
+}
+
+// Global Event Listeners for Closing
+document.addEventListener('DOMContentLoaded', () => {
+    const closeBtn = document.getElementById('close-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+
+    if (closeBtn) closeBtn.onclick = closeDrawer;
+    if (overlay) overlay.onclick = closeDrawer;
+
+    window.onkeydown = (e) => {
+        if (e.key === 'Escape') closeDrawer();
+    };
+});
 
 window.onload = init;
