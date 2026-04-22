@@ -15,6 +15,18 @@ body {
     line-height: 1.6;
 }
 
+#top-banner {
+    background-color: #FFFF00; /* Neon Safety Yellow */
+    color: #FF0000;           /* Pure Crimson Red */
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(138, 154, 91, 0.2);
+    font-weight: 500;
+}
+
 header {
     text-align: center;
     padding: 60px 20px;
@@ -280,7 +292,7 @@ footer {
     overflow-y: auto;
 }
 
-/* Placeholder Styling */
+/* Placeholder & Empty States */
 .placeholder-content {
     animation: fadeIn 0.8s ease;
 }
@@ -289,13 +301,95 @@ footer {
     height: 10px;
     background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
     background-size: 200% 100%;
-    background-repeat: no-repeat; /* Safari shimmer fix */
+    background-repeat: no-repeat;
     animation: shimmer 2s infinite;
     border-radius: 4px;
     margin: 15px 0;
 }
 
 .shimmer-line.shorter { width: 60%; }
+
+.implementation-placeholder {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 40px;
+    overflow: hidden;
+    animation: slowFadeIn 1s ease-out;
+}
+
+.placeholder-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.heartbeat-pulse {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    position: relative;
+    margin-bottom: 40px;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.heartbeat-pulse::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    width: 20%;
+    height: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+    filter: blur(1px);
+    animation: heartbeat 3s infinite linear;
+}
+
+.placeholder-content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.placeholder-content-wrapper h3 {
+    font-weight: 300;
+    letter-spacing: 5px;
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.placeholder-content-wrapper p {
+    color: #888;
+    font-size: 0.95rem;
+    max-width: 280px;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+@keyframes heartbeat {
+    0% { left: -20%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes slowFadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
 
 @keyframes shimmer {
     0% { background-position: 200% 0; }

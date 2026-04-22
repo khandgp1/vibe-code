@@ -8,8 +8,10 @@ async function init() {
         appData = await response.json();
         const container = document.getElementById('tab-container');
 
-        // Create Tabs
+        // Create Tabs (Showing only 'Intro' as requested)
         appData.days.forEach((day, index) => {
+            if (index > 0) return; // Hide Day 2, Day 3, etc.
+            
             const btn = document.createElement('button');
             btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
             btn.innerText = day.title;
@@ -130,55 +132,39 @@ Now, apply the requirements above to the following project:
     1: {
         title: "2. THE IMPLEMENTATION: ANTI-GRAVITY (IDX)",
         html: `
-            <div class="blueprint-layout">
-                <section class="blueprint-intro">
-                    <p><strong>Goal:</strong> Transform your architectural blueprint into a living, breathing codebase using Project IDX.</p>
-                </section>
-
-                <section class="tcrei-framework">
-                    <h4>The Implementation Workflow</h4>
-                    <p class="framework-subtitle">From Blueprint to Reality</p>
-                    <ul class="framework-list">
-                        <li><strong>Initialize:</strong> Open Project IDX and set up your development environment.</li>
-                        <li><strong>Inject:</strong> Feed your "Master Blueprint" into the IDX AI assistant.</li>
-                        <li><strong>Scaffold:</strong> Allow the AI to generate the initial file structure and core logic.</li>
-                        <li><strong>Preview:</strong> Use the built-in preview to see your progress in real-time.</li>
-                        <li><strong>Deploy:</strong> Push your changes to verify the implementation.</li>
-                    </ul>
-                </section>
-
-                <section class="master-blueprint">
-                    <h4>The "Anti-Gravity" Prompt</h4>
-                    <p class="minor-instruction">Use this prompt to trigger the initial codebase generation.</p>
-                    
-                    <div class="pro-tip">
-                        <strong>Pro Tip:</strong> Be specific about your file naming conventions and folder structures to ensure consistency across the project.
-                    </div>
-
-                    <div class="prompt-box">
-                        <div class="prompt-header">
-                            <span>Implementation Prompt</span>
-                            <button class="copy-btn">Copy</button>
-                        </div>
-                        <pre><code>Based on the previously generated Implementation Plan, please begin the implementation.
-Start by creating the initial folder structure and the fundamental 'index.html' and 'style.css' files.
-Ensure the design matches the aesthetic defined in the plan.
-Do not write all the logic at once; start with the skeleton and wait for my next instruction.</code></pre>
-                    </div>
-
-                    <p class="workflow-marker">Continue the loop in IDX</p>
-
-                    <div class="prompt-box">
-                        <div class="prompt-header">
-                            <span>Refinement Prompt</span>
-                            <button class="copy-btn">Copy</button>
-                        </div>
-                        <pre><code>Now that the skeleton is ready, please implement the [Specific Component Name].
-Follow the logic flow defined in the blueprint.
-Validate each step with a preview before moving to the next.</code></pre>
-                    </div>
-                </section>
-                <p class="workflow-marker final-instruction">Build, Test, Refine</p>
+            <div class="implementation-placeholder">
+                <div class="placeholder-watermark">02</div>
+                <div class="heartbeat-pulse"></div>
+                <div class="placeholder-content-wrapper">
+                    <h3>PAUSING PROGRESS</h3>
+                    <p>Construction will resume once the <strong>The Kickstart</strong> plan is complete.</p>
+                </div>
+            </div>
+        `
+    },
+    2: {
+        title: "3. THE REVIEW: STRATEGIC FEEDBACK",
+        html: `
+            <div class="implementation-placeholder">
+                <div class="placeholder-watermark">03</div>
+                <div class="heartbeat-pulse"></div>
+                <div class="placeholder-content-wrapper">
+                    <h3>PAUSING PROGRESS</h3>
+                    <p>Evaluation will resume once the <strong>Implementation</strong> phase is initiated.</p>
+                </div>
+            </div>
+        `
+    },
+    3: {
+        title: "4. THE ITERATION: REFINE AND REPEAT",
+        html: `
+            <div class="implementation-placeholder">
+                <div class="placeholder-watermark">04</div>
+                <div class="heartbeat-pulse"></div>
+                <div class="placeholder-content-wrapper">
+                    <h3>PAUSING PROGRESS</h3>
+                    <p>Refinement loop will activate once the <strong>initial development cycle</strong> is established.</p>
+                </div>
             </div>
         `
     }
@@ -191,8 +177,8 @@ function renderIntro(day) {
         <div class="intro-container layout-bento">
             <div class="grid-wrapper">
                 ${day.exercises.map((ex, idx) => `
-                    <div class="bento-card ${[0, 1].includes(idx) ? 'clickable-card' : ''}" 
-                         ${[0, 1].includes(idx) ? `onclick="openDrawer(${idx})"` : ''}>
+                    <div class="bento-card ${[0, 1, 2, 3].includes(idx) ? 'clickable-card' : ''}" 
+                         ${[0, 1, 2, 3].includes(idx) ? `onclick="openDrawer(${idx})"` : ''}>
                         <h3>${ex.name.split(':')[0]}</h3>
                         <p class="step-note">${ex.note}</p>
                     </div>
