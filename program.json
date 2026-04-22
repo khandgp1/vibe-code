@@ -33,32 +33,24 @@
       ]
     },
     {
-      "title": "DAY 2",
-      "focus": "Posterior Chain",
+      "title": "Snippets",
+      "focus": "Ready-to-Use Prompt Boilerplates",
+      "description": "Copy and paste these templates to accelerate your Vibe Coding workflow.",
       "exercises": [
         {
-          "name": "Romanian Deadlifts",
-          "sets": "3",
-          "reps": "10-12",
-          "note": "Hinge at the hips. Keep the bar close to your shins."
+          "name": "The Architect Kickstart",
+          "content": "Act as an Expert Software Architect. Your task is to create a detailed, step-by-step roadmap for a new project. This roadmap must outline features, file structures, and logic—without writing the actual implementation code yet.",
+          "note": "Use this for initial project planning."
         },
         {
-          "name": "Seated Cable Rows",
-          "sets": "4",
-          "reps": "12",
-          "note": "Squeeze shoulder blades together. Do not use momentum."
-        }
-      ]
-    },
-    {
-      "title": "DAY 3",
-      "focus": "Active Recovery",
-      "exercises": [
+          "name": "The Implementation Logic",
+          "content": "Based on the provided blueprint, generate the HTML, CSS, and Javascript. Ensure modular structure and clean, readable code. Focus on the core functionality first.",
+          "note": "Use this when moving from plan to code."
+        },
         {
-          "name": "Mobility Flow",
-          "sets": "1",
-          "reps": "20 min",
-          "note": "Focus on hip openers and thoracic extension."
+          "name": "The Strategic Refinement",
+          "content": "Review the current implementation. Identify potential bugs, performance bottlenecks, or aesthetic improvements. Provide a specific, prioritized list of adjustments.",
+          "note": "Use this for iterative improvements."
         }
       ]
     }

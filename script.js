@@ -8,13 +8,13 @@ async function init() {
         appData = await response.json();
         const container = document.getElementById('tab-container');
 
-        // Create Tabs (Showing only 'Intro' as requested)
+        // Create Tabs (Showing 'Intro' and 'Snippets')
         appData.days.forEach((day, index) => {
-            if (index > 0) return; // Hide Day 2, Day 3, etc.
+            if (index > 1) return; // Hide Day 3, etc.
             
             const btn = document.createElement('button');
             btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
-            btn.innerText = day.title;
+            btn.innerText = day.title.toUpperCase();
             btn.onclick = () => switchTab(index);
             container.appendChild(btn);
         });
@@ -40,9 +40,39 @@ function renderContent() {
     
     if (day.title.toLowerCase() === 'intro') {
         renderIntro(day);
+    } else if (day.title.toLowerCase() === 'snippets') {
+        renderSnippets(day);
     } else {
         renderWorkout(day);
     }
+}
+
+function renderSnippets(day) {
+    const content = document.getElementById('workout-content');
+    content.innerHTML = `
+        <div style="text-align:center; margin-bottom: 30px;">
+            <h2 style="font-weight:300;">${day.focus}</h2>
+            ${day.description ? `<p class="section-description">${day.description}</p>` : ''}
+        </div>
+        <div class="snippets-container">
+            ${day.exercises.map(ex => `
+                <div class="snippet-item">
+                    <h3>${ex.name}</h3>
+                    <p class="snippet-note">${ex.note}</p>
+                    <div class="prompt-box">
+                        <div class="prompt-header">
+                            <span>Boilerplate Snippet</span>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                        <pre><code>${ex.content}</code></pre>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+
+    // Re-bind copy buttons for the new content
+    bindCopyButtons();
 }
 
 function renderWorkout(day) {
