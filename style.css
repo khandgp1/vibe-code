@@ -582,14 +582,40 @@ footer {
 
 /* --- Snippets Tab Specific Layout --- */
 
+/* Wider content area scoped to Snippets tab only */
+#workout-content.snippets-wide {
+    max-width: 1280px;
+}
+
 .snippets-container {
     animation: fadeIn 0.5s ease;
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 30px;
+}
+
+/* Last item spans both columns when total count is odd */
+.snippet-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
 }
 
 .snippet-item {
-    margin-bottom: 60px; /* Slightly more margin since we lack the card border */
-    padding: 0;          /* Remove padding as we no longer have a container box */
+    margin-bottom: 0; /* Grid gap handles spacing */
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Prompt box grows to fill remaining cell height — equalizes heights per row */
+.snippet-item .prompt-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.snippet-item .prompt-box pre {
+    flex: 1;
 }
 
 .snippet-item h3 {
@@ -606,6 +632,16 @@ footer {
     margin-bottom: 20px;
     font-style: italic;
     font-weight: 300;
+}
+
+/* Collapse to single column on narrow viewports */
+@media (max-width: 768px) {
+    .snippets-container {
+        grid-template-columns: 1fr;
+    }
+    .snippet-item:last-child:nth-child(odd) {
+        grid-column: unset;
+    }
 }
 
 /* Prevent scroll when drawer is open (Enhanced for Safari) */

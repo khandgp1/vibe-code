@@ -38,9 +38,13 @@ function renderContent() {
     const content = document.getElementById('workout-content');
     const day = appData.days[currentTab];
     
+    // Scope the wider max-width to the Snippets tab only
+    content.classList.remove('snippets-wide');
+
     if (day.title.toLowerCase() === 'intro') {
         renderIntro(day);
     } else if (day.title.toLowerCase() === 'snippets') {
+        content.classList.add('snippets-wide');
         renderSnippets(day);
     } else {
         renderWorkout(day);
