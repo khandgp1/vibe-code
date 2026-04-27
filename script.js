@@ -1,3 +1,4 @@
+const SITE_PASSWORD = 'bernard';
 let appData = null;
 let currentTab = 0;
 
@@ -273,6 +274,35 @@ document.addEventListener('DOMContentLoaded', () => {
     window.onkeydown = (e) => {
         if (e.key === 'Escape') closeDrawer();
     };
+
+    // Password Protection Logic
+    const passwordInput = document.getElementById('site-password-input');
+    const passwordSubmit = document.getElementById('submit-password');
+    const passwordError = document.getElementById('password-error');
+    const passwordOverlay = document.getElementById('password-overlay');
+
+    if (passwordSubmit && passwordInput) {
+        const handlePasswordSubmit = () => {
+            if (passwordInput.value === SITE_PASSWORD) {
+                passwordOverlay.classList.add('hidden');
+                passwordError.style.display = 'none';
+                // Optional: Store in session storage if we want to remember it for the session
+                // sessionStorage.setItem('site_unlocked', 'true');
+            } else {
+                passwordError.style.display = 'block';
+                passwordInput.value = '';
+                passwordInput.focus();
+            }
+        };
+
+        passwordSubmit.onclick = handlePasswordSubmit;
+        passwordInput.onkeydown = (e) => {
+            if (e.key === 'Enter') handlePasswordSubmit();
+        };
+        
+        // Auto-focus password input
+        passwordInput.focus();
+    }
 });
 
 function bindCopyButtons() {
