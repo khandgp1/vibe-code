@@ -1,0 +1,3 @@
+Order of which Antigravity Model to Use
+- Switch and keep going
+- Using Antigravity is a faster workflow becasue you don't need to move platforms to use swap LLM models
