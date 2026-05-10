@@ -53,6 +53,50 @@
           "note": "Replace @ with the plan file reference. Execute"
         }
       ]
+    },
+    {
+      "title": "Clone",
+      "focus": "Website Cloning Guide",
+      "description": "Follow these steps to clone any website using AI with pixel-perfect accuracy.",
+      "notes": [
+        "Bolt.new usage is limited; you can create approximately 4 clones before hitting limits.",
+        "Use Bolt strictly to build the initial production version containing ONLY the navigation and hero sections.",
+        "Transition to AntiGravity + Claude to iteratively generate all remaining sections."
+      ],
+      "exercises": [
+        {
+          "name": "Capture the Vision",
+          "note": "On the target webpage, use a full-page screenshot tool to save the entire layout as a PNG file. Capture everything — header to footer.",
+          "type": "action"
+        },
+        {
+          "name": "Optimize Assets",
+          "note": "Upload your PNG to Squoosh and convert it to WebP. This compresses the image without sacrificing quality, keeping it within AI token limits.",
+          "type": "action",
+          "link": "https://squoosh.app",
+          "linkLabel": "Open Squoosh →"
+        },
+        {
+          "name": "The Bolt Clone Prompt",
+          "note": "Open Bolt.new, upload your WebP image, and paste this expert prompt. Bolt will build the UI iteratively, starting with the nav and hero.",
+          "content": "You are an expert UI/UX Frontend Developer tasked with creating a pixel-perfect, front-end-only React/Tailwind UI clone. You will work iteratively, building one section at a time to ensure maximum code quality and avoid token limits.\n\n## Technology Stack Requirements:\n- React (Vite) with TypeScript\n- Tailwind CSS for all styling\n- Lucide React for icons only\n\n## Critical Implementation Guidelines:\n\n### 1. Visual Accuracy Requirements:\n- Analyze the provided screenshot(s) with extreme attention to detail\n- Replicate exact layout, structural hierarchy, typography, color palette, and spacing\n- Match padding, margins, font sizes, and visual proportions precisely\n- Preserve the exact visual hierarchy and component relationships\n\n### 2. Technical Constraints:\n- Front-end only: No backend, databases, or authentication logic\n- Mock data: Create realistic, contextually appropriate mock data arrays (avoid generic Lorem Ipsum)\n- Responsive design: Implement flawless mobile, tablet, and desktop breakpoints using Tailwind's responsive prefixes\n- Interactive elements: Add hover states, focus rings, and smooth transitions for all interactive components\n- Assets: Use lucide-react icons and high-quality Unsplash URLs for images (format: https://images.unsplash.com/photo-...)\n\n### 3. Code Quality Standards:\n- Write production-ready, modular TypeScript components\n- Use proper TypeScript interfaces and types\n- Implement reusable components where applicable\n- Follow React best practices and hooks patterns\n- Ensure accessibility with proper ARIA labels and semantic HTML\n\n## Phase 1 Execution Instructions:\nStep 1: Analyze the visual design and establish foundational app structure\nStep 2: Configure any custom Tailwind settings (colors, fonts, spacing) based on the screenshot\nStep 3: Build ONLY the Navigation Bar and Hero Section with complete functionality\nStep 4: Stop and request direction for the next section\n\n## Critical Constraints:\n- Build ONLY the header/navigation and hero section in this phase\n- Do NOT create placeholder comments for future sections\n- Do NOT attempt to build the entire page\n- Provide complete, functional code for the specified sections only\n- After completion, ask: \"Which section should we build next?\"\n\nURL: []",
+          "type": "prompt",
+          "link": "https://bolt.new",
+          "linkLabel": "Open Bolt.new →"
+        },
+        {
+          "name": "Export to GitHub",
+          "note": "Once satisfied with the Bolt output, connect your project to GitHub. This preserves your work, enables version control, and unlocks deployment options.",
+          "type": "action",
+          "link": "https://github.com",
+          "linkLabel": "Open GitHub →"
+        },
+        {
+          "name": "Refine on AntiGravity",
+          "note": "Pull the repository into AntiGravity for surgical adjustments. Use implementation plans to guide the AI through precise, targeted edits until the clone is perfect.",
+          "type": "action"
+        }
+      ]
     }
   ]
 }

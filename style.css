@@ -1,9 +1,12 @@
 :root {
-    --bg-color: #F5F5F3;      /* Matte Off-White */
+    --bg-color: #F5F5F3;
+    /* Matte Off-White */
     --card-bg: #FFFFFF;
-    --text-main: #2D2D2D;     /* Slate Charcoal */
+    --text-main: #2D2D2D;
+    /* Slate Charcoal */
     --text-muted: #757575;
-    --accent: #8A9A5B;        /* Muted Sage */
+    --accent: #8A9A5B;
+    /* Muted Sage */
     --border: #E0E0DE;
 }
 
@@ -16,8 +19,10 @@ body {
 }
 
 #top-banner {
-    background-color: #FFFF00; /* Neon Safety Yellow */
-    color: #FF0000;           /* Pure Crimson Red */
+    background-color: #FFFF00;
+    /* Neon Safety Yellow */
+    color: #FF0000;
+    /* Pure Crimson Red */
     text-align: center;
     padding: 12px 20px;
     font-size: 0.75rem;
@@ -98,7 +103,7 @@ h1 {
     padding: 25px;
     margin-bottom: 20px;
     border-radius: 4px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     border: 1px solid var(--border);
     transition: transform 0.2s ease;
 }
@@ -144,8 +149,15 @@ footer {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .layout-bento .grid-wrapper {
@@ -156,7 +168,8 @@ footer {
 
 .layout-bento .bento-card.clickable-card {
     cursor: pointer;
-    border: 1px solid rgba(138, 154, 91, 0.2); /* Soft sage border */
+    border: 1px solid rgba(138, 154, 91, 0.2);
+    /* Soft sage border */
 }
 
 .layout-bento .bento-card.clickable-card:hover {
@@ -174,7 +187,7 @@ footer {
 
 .layout-bento .bento-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
 }
 
 .layout-bento h3 {
@@ -225,7 +238,8 @@ footer {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateZ(0); /* Safari GPU fix */
+    transform: translateZ(0);
+    /* Safari GPU fix */
 }
 
 #drawer-overlay.active {
@@ -240,14 +254,15 @@ footer {
     height: 100%;
     width: 450px;
     max-width: 90vw;
-    background: #1A1A1A; /* Deeper Charcoal */
+    background: #1A1A1A;
+    /* Deeper Charcoal */
     color: #FFF;
     z-index: 1001;
     transform: translateX(100%);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
 }
 
 #side-drawer.active {
@@ -259,7 +274,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .drawer-header h3 {
@@ -279,7 +294,8 @@ footer {
     cursor: pointer;
     opacity: 0.5;
     transition: opacity 0.2s;
-    -webkit-appearance: none; /* Safari button fix */
+    -webkit-appearance: none;
+    /* Safari button fix */
 }
 
 #close-drawer:hover {
@@ -299,7 +315,7 @@ footer {
 
 .shimmer-line {
     height: 10px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 75%);
     background-size: 200% 100%;
     background-repeat: no-repeat;
     animation: shimmer 2s infinite;
@@ -307,7 +323,9 @@ footer {
     margin: 15px 0;
 }
 
-.shimmer-line.shorter { width: 60%; }
+.shimmer-line.shorter {
+    width: 60%;
+}
 
 .implementation-placeholder {
     height: 100%;
@@ -380,20 +398,45 @@ footer {
 }
 
 @keyframes heartbeat {
-    0% { left: -20%; opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { left: 100%; opacity: 0; }
+    0% {
+        left: -20%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }
 
 @keyframes slowFadeIn {
-    from { opacity: 0; transform: scale(0.98); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* --- Blueprint Layout Styles --- */
@@ -465,8 +508,8 @@ footer {
 }
 
 .framework-list li {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -496,12 +539,12 @@ footer {
 
 .prompt-box {
     background: #D4C4A8;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
     border-left: 3px solid var(--accent);
     border-radius: 8px;
     overflow: hidden;
     margin-top: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 .prompt-header {
@@ -512,7 +555,7 @@ footer {
     align-items: center;
     font-size: 0.75rem;
     color: #5D5446;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .copy-btn {
@@ -580,6 +623,114 @@ footer {
     margin-bottom: 2px;
 }
 
+/* --- Clone Tab Specific Layout --- */
+
+/* Floating Action Button */
+.clone-notes-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: #FFF;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-family: serif;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
+}
+
+.clone-notes-fab:hover {
+    transform: scale(1.1);
+    background-color: #7A8A4B;
+}
+
+.clone-notes-fab:active {
+    transform: scale(0.95);
+}
+
+/* Glassmorphic Popover */
+.clone-notes-popover {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 320px;
+    max-width: calc(100vw - 60px);
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform-origin: bottom right;
+}
+
+.clone-notes-popover.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.popover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.popover-header strong {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.popover-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+.popover-close:hover {
+    opacity: 1;
+}
+
+.clone-notes-popover ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.clone-notes-popover li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.clone-notes-popover li:last-child {
+    margin-bottom: 0;
+}
+
 /* --- Snippets Tab Specific Layout --- */
 
 /* Wider content area scoped to Snippets tab only */
@@ -601,7 +752,8 @@ footer {
 }
 
 .snippet-item {
-    margin-bottom: 0; /* Grid gap handles spacing */
+    margin-bottom: 0;
+    /* Grid gap handles spacing */
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -639,6 +791,7 @@ footer {
     .snippets-container {
         grid-template-columns: 1fr;
     }
+
     .snippet-item:last-child:nth-child(odd) {
         grid-column: unset;
     }
@@ -648,7 +801,7 @@ footer {
 body.drawer-open {
     overflow: hidden;
     height: 100vh;
-    touch-action:none;
+    touch-action: none;
 }
 
 /* --- Password Overlay --- */
@@ -677,7 +830,7 @@ body.drawer-open {
     padding: 40px;
     border-radius: 12px;
     border: 1px solid var(--border);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
     text-align: center;
     max-width: 400px;
     width: 100%;
@@ -685,8 +838,15 @@ body.drawer-open {
 }
 
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .password-card h2 {
@@ -745,4 +905,142 @@ body.drawer-open {
     color: #D32F2F;
     margin-top: 15px;
     font-size: 0.8rem;
+}
+
+/* --- Clone Tab: Vertical Timeline Layout --- */
+
+#workout-content.snippets-wide .clone-timeline {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.clone-timeline {
+    display: flex;
+    flex-direction: column;
+    animation: fadeIn 0.5s ease;
+    padding-bottom: 20px;
+}
+
+.clone-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.clone-step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 44px;
+}
+
+.clone-step-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(138, 154, 91, 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.clone-step:hover .clone-step-badge {
+    box-shadow: 0 6px 18px rgba(138, 154, 91, 0.45);
+    transform: scale(1.05);
+}
+
+.clone-step-connector {
+    width: 1px;
+    flex: 1;
+    min-height: 30px;
+    background: repeating-linear-gradient(to bottom,
+            var(--border) 0px,
+            var(--border) 6px,
+            transparent 6px,
+            transparent 12px);
+    margin: 6px 0;
+}
+
+.clone-step-right {
+    flex: 1;
+    padding-bottom: 30px;
+}
+
+.clone-step-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.clone-step-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba(138, 154, 91, 0.4);
+}
+
+.clone-step-card--prompt {
+    border-color: rgba(138, 154, 91, 0.25);
+    background: #FAFAF8;
+}
+
+.clone-step-title {
+    margin: 0 0 8px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.2px;
+}
+
+.clone-step-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    font-weight: 300;
+}
+
+.clone-step-link {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 7px 16px;
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.clone-step-link:hover {
+    background: var(--accent);
+    color: #FFF;
+}
+
+@media (max-width: 480px) {
+    .clone-step-badge {
+        width: 36px;
+        height: 36px;
+        font-size: 0.75rem;
+    }
+
+    .clone-step-left {
+        width: 36px;
+    }
+
+    .clone-step-card {
+        padding: 18px;
+    }
 }

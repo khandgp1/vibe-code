@@ -1,4 +1,4 @@
-const SITE_PASSWORD = 'bernard';
+// Configuration is loaded from config.js
 let appData = null;
 let currentTab = 0;
 
@@ -11,8 +11,8 @@ async function init() {
 
         // Create Tabs (Showing 'Intro' and 'Snippets')
         appData.days.forEach((day, index) => {
-            if (index > 1) return; // Hide Day 3, etc.
-            
+            if (index > 2) return; // Show Intro, Snippets, and Clone
+
             const btn = document.createElement('button');
             btn.className = `tab-btn ${index === 0 ? 'active' : ''}`;
             btn.innerText = day.title.toUpperCase();
@@ -38,7 +38,10 @@ function switchTab(index) {
 function renderContent() {
     const content = document.getElementById('workout-content');
     const day = appData.days[currentTab];
-    
+
+    // Cleanup global UI elements (like Clone FAB/Popover)
+    cleanupGlobalUI();
+
     // Scope the wider max-width to the Snippets tab only
     content.classList.remove('snippets-wide');
 
@@ -47,6 +50,9 @@ function renderContent() {
     } else if (day.title.toLowerCase() === 'snippets') {
         content.classList.add('snippets-wide');
         renderSnippets(day);
+    } else if (day.title.toLowerCase() === 'clone') {
+        content.classList.add('snippets-wide');
+        renderClone(day);
     } else {
         renderWorkout(day);
     }
@@ -78,6 +84,122 @@ function renderSnippets(day) {
 
     // Re-bind copy buttons for the new content
     bindCopyButtons();
+}
+
+function renderClone(day) {
+    const content = document.getElementById('workout-content');
+
+    const stepsHtml = day.exercises.map((ex, idx) => {
+        const stepNum = String(idx + 1).padStart(2, '0');
+        const isLast = idx === day.exercises.length - 1;
+
+        const connector = isLast ? '' : `<div class="clone-step-connector"></div>`;
+
+        let cardBody = '';
+
+        if (ex.type === 'prompt') {
+            // Only the Bolt prompt gets a copyable code block
+            cardBody = `
+                <div class="clone-step-card clone-step-card--prompt">
+                    <h3 class="clone-step-title">${ex.name}</h3>
+                    <p class="clone-step-desc">${ex.note}</p>
+                    ${ex.link ? `<a href="${ex.link}" target="_blank" rel="noopener" class="clone-step-link">${ex.linkLabel || 'Open →'}</a>` : ''}
+                    <div class="prompt-box" style="margin-top: 20px;">
+                        <div class="prompt-header">
+                            <span>Bolt Clone Prompt</span>
+                            <button class="copy-btn">Copy</button>
+                        </div>
+                        <pre><code>${ex.content}</code></pre>
+                    </div>
+                </div>
+            `;
+        } else {
+            // Action steps: clean card, no code block
+            cardBody = `
+                <div class="clone-step-card">
+                    <h3 class="clone-step-title">${ex.name}</h3>
+                    <p class="clone-step-desc">${ex.note}</p>
+                    ${ex.link ? `<a href="${ex.link}" target="_blank" rel="noopener" class="clone-step-link">${ex.linkLabel || 'Open →'}</a>` : ''}
+                </div>
+            `;
+        }
+
+        return `
+            <div class="clone-step">
+                <div class="clone-step-left">
+                    <div class="clone-step-badge">${stepNum}</div>
+                    ${connector}
+                </div>
+                <div class="clone-step-right">
+                    ${cardBody}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    if (day.notes) {
+        // Create FAB
+        const fab = document.createElement('button');
+        fab.className = 'clone-notes-fab';
+        fab.innerHTML = '<i>i</i>';
+        fab.title = 'View Important Notes';
+        fab.onclick = (e) => {
+            e.stopPropagation();
+            toggleCloneNotes();
+        };
+        document.body.appendChild(fab);
+
+        // Create Popover
+        const popover = document.createElement('div');
+        popover.className = 'clone-notes-popover';
+        popover.innerHTML = `
+            <div class="popover-header">
+                <strong>Important Notes</strong>
+                <button class="popover-close">&times;</button>
+            </div>
+            <ul>
+                ${day.notes.map(note => `<li>${note}</li>`).join('')}
+            </ul>
+        `;
+        popover.onclick = (e) => e.stopPropagation();
+        document.body.appendChild(popover);
+
+        popover.querySelector('.popover-close').onclick = closeCloneNotes;
+    }
+
+    content.innerHTML = `
+        <div style="text-align:center; margin-bottom: 40px;">
+            <h2 style="font-weight:300;">${day.focus}</h2>
+            ${day.description ? `<p class="section-description">${day.description}</p>` : ''}
+        </div>
+        <div class="clone-timeline">
+            ${stepsHtml}
+        </div>
+    `;
+
+    // Re-bind copy buttons for the prompt step
+    bindCopyButtons();
+}
+
+function toggleCloneNotes() {
+    const popover = document.querySelector('.clone-notes-popover');
+    if (popover) {
+        popover.classList.toggle('active');
+    }
+}
+
+function closeCloneNotes() {
+    const popover = document.querySelector('.clone-notes-popover');
+    if (popover) {
+        popover.classList.remove('active');
+    }
+}
+
+function cleanupGlobalUI() {
+    const fab = document.querySelector('.clone-notes-fab');
+    const popover = document.querySelector('.clone-notes-popover');
+    if (fab) fab.remove();
+    if (popover) popover.remove();
 }
 
 function renderWorkout(day) {
@@ -207,7 +329,7 @@ Now, apply the requirements above to the following project:
 
 function renderIntro(day) {
     const content = document.getElementById('workout-content');
-    
+
     const innerContent = `
         <div class="intro-container layout-bento">
             <div class="grid-wrapper">
@@ -249,7 +371,7 @@ function openDrawer(index) {
     document.getElementById('side-drawer').classList.add('active');
     document.getElementById('drawer-overlay').classList.add('active');
     document.body.classList.add('drawer-open');
-    
+
     // Re-bind copy buttons for the new content
     bindCopyButtons();
 }
@@ -272,8 +394,16 @@ document.addEventListener('DOMContentLoaded', () => {
     bindCopyButtons();
 
     window.onkeydown = (e) => {
-        if (e.key === 'Escape') closeDrawer();
+        if (e.key === 'Escape') {
+            closeDrawer();
+            closeCloneNotes();
+        }
     };
+
+    // Close Clone Notes popover when clicking outside
+    document.addEventListener('click', () => {
+        closeCloneNotes();
+    });
 
     // Password Protection Logic
     const passwordInput = document.getElementById('site-password-input');
@@ -282,26 +412,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordOverlay = document.getElementById('password-overlay');
 
     if (passwordSubmit && passwordInput) {
-        const handlePasswordSubmit = () => {
-            if (passwordInput.value === SITE_PASSWORD) {
-                passwordOverlay.classList.add('hidden');
-                passwordError.style.display = 'none';
-                // Optional: Store in session storage if we want to remember it for the session
-                // sessionStorage.setItem('site_unlocked', 'true');
-            } else {
-                passwordError.style.display = 'block';
-                passwordInput.value = '';
-                passwordInput.focus();
-            }
-        };
+        // If password is disabled in config, hide the overlay immediately
+        if (!CONFIG.passwordEnabled) {
+            passwordOverlay.classList.add('hidden');
+        } else {
+            const handlePasswordSubmit = () => {
+                if (passwordInput.value === CONFIG.sitePassword) {
+                    passwordOverlay.classList.add('hidden');
+                    passwordError.style.display = 'none';
+                } else {
+                    passwordError.style.display = 'block';
+                    passwordInput.value = '';
+                    passwordInput.focus();
+                }
+            };
 
-        passwordSubmit.onclick = handlePasswordSubmit;
-        passwordInput.onkeydown = (e) => {
-            if (e.key === 'Enter') handlePasswordSubmit();
-        };
-        
-        // Auto-focus password input
-        passwordInput.focus();
+            passwordSubmit.onclick = handlePasswordSubmit;
+            passwordInput.onkeydown = (e) => {
+                if (e.key === 'Enter') handlePasswordSubmit();
+            };
+
+            // Auto-focus password input
+            passwordInput.focus();
+        }
     }
 });
 
@@ -310,9 +443,9 @@ function bindCopyButtons() {
         copyBtn.onclick = async () => {
             const codeElement = copyBtn.closest('.prompt-box').querySelector('code');
             if (!codeElement) return;
-            
+
             const text = codeElement.innerText;
-            
+
             // 1. Try Modern Clipboard API
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 try {
